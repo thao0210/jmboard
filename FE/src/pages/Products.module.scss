@@ -10,7 +10,7 @@
 
 .pageTitle {
   font-size: 56px;
-  font-weight: 800;
+  font-weight: bold;
   margin-bottom: 16px;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-orange) 100%);
   -webkit-background-clip: text;
@@ -229,7 +229,7 @@
 
 .price {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: bold;
   color: var(--color-primary);
   margin-bottom: 20px;
 }

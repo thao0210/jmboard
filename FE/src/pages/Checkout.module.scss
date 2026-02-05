@@ -6,7 +6,7 @@
 
 .pageTitle {
   font-size: 48px;
-  font-weight: 800;
+  font-weight: bold;
   margin-bottom: 40px;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-orange) 100%);
   -webkit-background-clip: text;
@@ -42,7 +42,7 @@
   
   h2 {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: bold;
     margin-bottom: 24px;
     color: var(--color-text);
   }
@@ -148,7 +148,7 @@
   
   h2 {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: bold;
     margin-bottom: 24px;
     color: var(--color-text);
   }

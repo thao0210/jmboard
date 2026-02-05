@@ -57,7 +57,7 @@
 .logoText {
   font-family: var(--font-display);
   font-size: 24px;
-  font-weight: 800;
+  font-weight: bold;
   color: var(--color-light);
   letter-spacing: 1px;
 }
@@ -70,7 +70,7 @@
 
 .logoName {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: bold;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

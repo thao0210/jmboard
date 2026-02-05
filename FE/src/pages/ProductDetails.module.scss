@@ -83,7 +83,7 @@
 
 .productName {
   font-size: 42px;
-  font-weight: 800;
+  font-weight: bold;
   margin-bottom: 20px;
   color: var(--color-text);
   line-height: 1.2;
@@ -95,7 +95,7 @@
 
 .price {
   font-size: 48px;
-  font-weight: 800;
+  font-weight: bold;
   color: var(--color-primary);
   margin-bottom: 32px;
   
@@ -222,7 +222,7 @@
   
   h2 {
     font-size: 36px;
-    font-weight: 800;
+    font-weight: bold;
     margin-bottom: 40px;
     color: var(--color-text);
   }
@@ -278,7 +278,7 @@
   
   p {
     font-size: 20px;
-    font-weight: 800;
+    font-weight: bold;
     color: var(--color-primary);
   }
 }
