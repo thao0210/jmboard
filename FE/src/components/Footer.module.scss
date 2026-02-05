@@ -1,0 +1,114 @@
+.footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: var(--color-light);
+  padding: 80px 0 0;
+  margin-top: 120px;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.footerSection {
+  h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-gold);
+  }
+  
+  ul {
+    list-style: none;
+    
+    li {
+      margin-bottom: 12px;
+      
+      a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+        transition: var(--transition);
+        
+        &:hover {
+          color: var(--color-primary);
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+.logoSection {
+  .footerLogo {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  
+  .footerTagline {
+    font-size: 14px;
+    color: var(--color-gold);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  
+  .description {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+}
+
+.contactList {
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    
+    svg {
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+  }
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 32px 0;
+  text-align: center;
+}
+
+.colorBar {
+  display: flex;
+  height: 3px;
+  margin-bottom: 24px;
+  gap: 4px;
+  
+  div {
+    flex: 1;
+    border-radius: 2px;
+  }
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
