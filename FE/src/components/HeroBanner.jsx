@@ -78,7 +78,7 @@ const HeroBanner = () => {
                     <img src={product.image} alt={product.name} />
                   </div>
                   <div className={styles.productInfo}>
-                    <p className={styles.productName}>{product.name}</p>
+                    <p className={styles.productName}>{product.name.substring(0, 18)}...</p>
                   </div>
                 </div>
                 <div className={styles.hotspotTooltip}>
