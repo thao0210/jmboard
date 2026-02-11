@@ -42,27 +42,29 @@ const Header = ({ cartCount }) => {
             </div>
           </Link>
 
-          <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`${styles.navLink} ${location.pathname === item.path ? styles.active : ''}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className={styles.rightSection}>
+            <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`${styles.navLink} ${location.pathname === item.path ? styles.active : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
-          <Link to="/cart" className={styles.cartButton}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-            {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
-          </Link>
+            <Link to="/cart" className={styles.cartButton}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+              {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
+            </Link>
+          </div>
 
           <button 
             className={styles.mobileToggle}
