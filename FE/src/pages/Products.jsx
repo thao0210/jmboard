@@ -5,7 +5,7 @@ import styles from './Products.module.scss';
 
 const Products = ({ addToCart }) => {
   const [selected, setSelected] = useState(null);
-  const [expanded, setExpanded] = useState({ 'Product JM': true, 'Magnetic Tools': false, 'Project': false });
+  const [expanded, setExpanded] = useState({ 'Product JM': false, 'Magnetic Tools': false, 'Project': false });
 
   // Bấm vào parent: toggle expand VÀ set filter
   const handleParentClick = (key) => {
