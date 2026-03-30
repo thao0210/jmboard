@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './styles/global.scss';
+import NewsDetail from './pages/NewsDetail';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -78,6 +79,7 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
         </Routes>
         <Footer />
       </div>

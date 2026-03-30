@@ -12,13 +12,14 @@
   font-size: 56px;
   font-weight: bold;
   margin-bottom: 16px;
+  font-family: inherit;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
+
   @media (max-width: 768px) {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 
@@ -29,14 +30,15 @@
 
 .productsLayout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 40px;
-  
+
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
   }
 }
 
+/* ── Sidebar ── */
 .sidebar {
   @media (max-width: 968px) {
     order: 2;
@@ -46,69 +48,146 @@
 .sidebarCard {
   background: white;
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: 20px;
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 120px;
-  
+
   @media (max-width: 968px) {
     position: static;
   }
 }
 
 .sidebarTitle {
-  font-size: 20px;
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--color-text);
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  padding: 0 4px;
+  font-family: inherit;
 }
 
-.categoryList {
-  list-style: none;
-  
-  li {
-    margin-bottom: 8px;
-  }
+.categoryGroup {
+  margin-bottom: 2px;
 }
 
-.categoryButton {
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: var(--border-radius-sm);
+.parentRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* KEY CHANGE: dùng flex-start thay space-between, count nằm sát label */
+.parentItem {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 8px;
   text-align: left;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  transition: var(--transition);
+  justify-content: flex-start;   /* ← không còn space-between */
+  gap: 6px;
+  transition: background 0.18s ease, color 0.18s ease;
   background: transparent;
-  
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  font-family: inherit;
+
   &:hover {
     background: var(--color-gray);
   }
-  
+
   &.active {
     background: var(--color-primary);
     color: white;
-    
-    .categoryCount {
-      background: rgba(255, 255, 255, 0.2);
+
+    .count {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
     }
   }
 }
 
-.categoryName {
-  font-weight: 600;
-  font-size: 15px;
+.expandBtn {
+  padding: 6px 7px;
+  border-radius: 6px;
+  color: var(--color-text-light);
+  transition: background 0.18s ease, color 0.18s ease;
+  flex-shrink: 0;
+  line-height: 0;
+
+  &:hover {
+    background: var(--color-gray);
+    color: var(--color-text);
+  }
 }
 
-.categoryCount {
+/* Count nhỏ gọn ngay cạnh chữ */
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 5px;
   background: var(--color-gray);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 13px;
+  color: var(--color-text-light);
+  border-radius: 20px;
+  font-size: 11px;
   font-weight: 600;
+  flex-shrink: 0;
+  transition: background 0.18s ease, color 0.18s ease;
 }
 
+/* Child items */
+.childList {
+  list-style: none;
+  margin: 2px 0 4px 16px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-gray);
+
+  li {
+    margin-bottom: 1px;
+  }
+}
+
+.childItem {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 7px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* ← không còn space-between */
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-light);
+  background: transparent;
+  transition: background 0.18s ease, color 0.18s ease;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--color-gray);
+    color: var(--color-text);
+  }
+
+  &.activeChild {
+    color: var(--color-primary);
+    font-weight: 700;
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+
+    .count {
+      background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+      color: var(--color-primary);
+    }
+  }
+}
+
+/* ── Main content ── */
 .mainContent {
   @media (max-width: 968px) {
     order: 1;
@@ -116,27 +195,28 @@
 }
 
 .resultsHeader {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   padding-bottom: 16px;
   border-bottom: 2px solid var(--color-gray);
 }
 
 .resultsCount {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-text-light);
   font-weight: 500;
 }
 
 .productsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 32px;
-  
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
 }
 
+/* ── Product card ── */
 .productCard {
   background: white;
   border-radius: var(--border-radius);
@@ -144,29 +224,27 @@
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   animation: fadeIn 0.6s ease-out backwards;
-  
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    
-    .imageWrapper {
-      .overlay {
-        opacity: 1;
-      }
-      
-      img {
-        transform: scale(1.1);
-      }
+
+    .overlay {
+      opacity: 1;
+    }
+
+    .imageWrapper img {
+      transform: scale(1.08);
     }
   }
 }
 
 .imageWrapper {
   position: relative;
-  height: 280px;
+  height: 240px;
   overflow: hidden;
   display: block;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -177,11 +255,8 @@
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 154, 128, 0.9);
+  inset: 0;
+  background: rgba(0, 154, 128, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,57 +267,82 @@
 .viewDetails {
   color: white;
   font-weight: 700;
-  font-size: 16px;
-  padding: 12px 24px;
+  font-size: 15px;
+  padding: 10px 22px;
   border: 2px solid white;
   border-radius: var(--border-radius-sm);
 }
 
 .productInfo {
-  padding: 24px;
+  padding: 20px 24px 24px;
 }
 
-.category {
-  display: inline-block;
-  font-size: 12px;
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.categoryBadge {
+  font-size: 11px;
   font-weight: 600;
   color: var(--color-primary);
-  background: rgba(0, 154, 128, 0.1);
-  padding: 4px 12px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  padding: 3px 10px;
+  border-radius: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+}
+
+.subcategoryBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  background: var(--color-gray);
+  padding: 3px 10px;
+  border-radius: 10px;
 }
 
 .productName {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--color-text);
+  font-family: inherit;
   transition: var(--transition);
-  
+  line-height: 1.35;
+
   &:hover {
     color: var(--color-primary);
   }
 }
 
 .price {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  font-family: inherit;
+}
+
+.priceProject {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-bottom: 18px;
+  font-style: italic;
 }
 
 .actions {
   display: flex;
-  gap: 12px;
-  
+  gap: 10px;
+
   .btn {
     flex: 1;
     justify-content: center;
     font-size: 14px;
-    padding: 12px 20px;
+    padding: 10px 16px;
   }
 }
 

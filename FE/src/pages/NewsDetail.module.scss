@@ -1,0 +1,290 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background: var(--color-gray);
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px;
+  gap: 20px;
+  font-size: 18px;
+  color: var(--color-text-light);
+
+  button {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+/* ── Back button ── */
+.topbar {
+  max-width: min(900px, 90%);
+  margin: 0 auto;
+  padding: 36px 0 0;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-text-light);
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+/* ── Content column ── */
+.contentCol {
+  max-width: min(900px, 90%);
+  margin: 0 auto;
+  padding: 28px 0 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.categoryBadge {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.date {
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
+/* ── Fix font: dùng font-family bình thường, không dùng biến heading có thể đang bị set font lạ ── */
+.articleTitle {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--color-text);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    font-size: 26px;
+  }
+}
+
+.lead {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: inherit;
+  color: var(--color-text-light);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+/* ── Article image ── */
+.imageWrap {
+  margin-bottom: 36px;
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    display: block;
+  }
+}
+
+/* ── Body content ── */
+.body {
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  color: var(--color-text-light);
+  line-height: 1.8;
+
+  p {
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: inherit;
+    color: var(--color-text);
+    margin: 36px 0 14px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: inherit;
+    color: var(--color-text);
+    margin: 28px 0 10px;
+  }
+
+  ul,
+  ol {
+    padding-left: 22px;
+    margin-bottom: 18px;
+
+    li {
+      margin-bottom: 8px;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 18px;
+    margin: 28px 0;
+    font-style: italic;
+    color: var(--color-text);
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid darken(#f5f5f5, 8%);
+  margin: 36px 0;
+}
+
+/* ── Share ── */
+.shareRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.shareLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: white;
+  transition: var(--transition);
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Related news ── */
+.related {
+  max-width: min(900px, 90%);
+  margin: 56px auto 0;
+}
+
+.relatedHeading {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.relatedCard {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  animation: fadeUp 0.4s ease-out backwards;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+}
+
+.relatedBody {
+  padding: 14px 16px 16px;
+}
+
+.relatedCat {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.relatedTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin-bottom: 5px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.relatedDate {
+  font-size: 11px;
+  color: var(--color-text-light);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

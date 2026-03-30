@@ -1,9 +1,11 @@
 // Mock product data
 export const products = [
+  // ── Product JM ──
   {
     id: 'p1',
     name: 'JM Magnetic Board - Classic White',
     category: 'Product JM',
+    subcategory: 'JM Board A',
     price: 45.99,
     image: 'https://kalamitica.com/img/cms/Blog/img_copertina_parete-verde.jpg',
     description: 'Premium magnetic wall board with smooth white surface. Perfect for modern kitchens and offices.',
@@ -15,6 +17,7 @@ export const products = [
     id: 'p2',
     name: 'JM Magnetic Board - Sleek Black',
     category: 'Product JM',
+    subcategory: 'JM Board A',
     price: 49.99,
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
     description: 'Elegant black magnetic board that adds sophistication to any space.',
@@ -26,6 +29,7 @@ export const products = [
     id: 'p3',
     name: 'JM Magnetic Board - Natural Wood Frame',
     category: 'Product JM',
+    subcategory: 'JM Board A',
     price: 59.99,
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop',
     description: 'Combines functionality with natural aesthetics. Wood frame adds warmth to your space.',
@@ -37,6 +41,7 @@ export const products = [
     id: 'p4',
     name: 'JM Magnetic Board - Large Premium',
     category: 'Product JM',
+    subcategory: 'JM Board A',
     price: 79.99,
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&h=600&fit=crop',
     description: 'Extra-large magnetic surface for maximum organization and creativity.',
@@ -45,9 +50,36 @@ export const products = [
     material: 'Industrial-grade steel'
   },
   {
+    id: 'p5',
+    name: 'JM Board Slim - Rose Gold',
+    category: 'Product JM',
+    subcategory: 'JM Board B',
+    price: 64.99,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop',
+    description: 'Slim-profile magnetic board with a luxurious rose gold finish.',
+    features: ['Ultra-slim 2mm profile', 'Premium finish', 'Strong magnets', 'Wall-mounted'],
+    dimensions: '60cm x 40cm',
+    material: 'Steel with rose gold powder coating'
+  },
+  {
+    id: 'p6',
+    name: 'JM Board Slim - Sage Green',
+    category: 'Product JM',
+    subcategory: 'JM Board B',
+    price: 64.99,
+    image: 'https://kalamitica.com/img/cms/Blog/img_copertina_parete-verde.jpg',
+    description: 'Trendy sage green finish that blends beautifully with natural home decor.',
+    features: ['Trending color', 'Matte finish', 'Easy mounting', 'Modern design'],
+    dimensions: '60cm x 40cm',
+    material: 'Steel with sage green powder coating'
+  },
+
+  // ── Magnetic Tools ──
+  {
     id: 't1',
     name: 'Magnetic Knife Holder',
-    category: 'Tools',
+    category: 'Magnetic Tools',
+    subcategory: 'Kitchen',
     price: 24.99,
     image: 'https://i.etsystatic.com/12328946/r/il/365631/3942801370/il_570xN.3942801370_713h.jpg',
     description: 'Strong magnetic strip for safely storing kitchen knives and metal tools.',
@@ -58,7 +90,8 @@ export const products = [
   {
     id: 't2',
     name: 'Magnetic Spice Rack Set',
-    category: 'Tools',
+    category: 'Magnetic Tools',
+    subcategory: 'Kitchen',
     price: 34.99,
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=400&fit=crop',
     description: 'Set of 12 magnetic containers for organizing spices on your magnetic wall.',
@@ -69,7 +102,8 @@ export const products = [
   {
     id: 't3',
     name: 'Magnetic Hooks - Set of 6',
-    category: 'Tools',
+    category: 'Magnetic Tools',
+    subcategory: 'Accessories',
     price: 14.99,
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
     description: 'Versatile magnetic hooks for hanging utensils, towels, and more.',
@@ -80,7 +114,8 @@ export const products = [
   {
     id: 't4',
     name: 'Magnetic Whiteboard Markers',
-    category: 'Tools',
+    category: 'Magnetic Tools',
+    subcategory: 'Accessories',
     price: 12.99,
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400&h=400&fit=crop',
     description: 'Set of 4 dry-erase markers with magnetic caps.',
@@ -91,17 +126,84 @@ export const products = [
   {
     id: 't5',
     name: 'Magnetic Paper Towel Holder',
-    category: 'Tools',
+    category: 'Magnetic Tools',
+    subcategory: 'Kitchen',
     price: 19.99,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6JNODjTZ4qgt0P-eVpj8EnxeFj79qWu1ssw&s',
     description: 'Convenient magnetic paper towel dispenser for your kitchen wall.',
     features: ['One-hand operation', 'Fits standard rolls', 'Rust-resistant', 'Modern look'],
     dimensions: '30cm height',
     material: 'Brushed stainless steel'
+  },
+
+  // ── Project ──
+  {
+    id: 'pr1',
+    name: 'Cafe Minimalist - HCMC',
+    category: 'Project',
+    subcategory: 'Commercial',
+    price: 0,
+    image: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=600&fit=crop',
+    description: 'Full magnetic wall installation for a minimalist café in Ho Chi Minh City. Custom-sized panels with embedded menu displays.',
+    features: ['Custom sizing', 'Full wall coverage', 'Menu display integration', 'Professional install'],
+    dimensions: 'Custom',
+    material: 'Industrial-grade steel panels'
+  },
+  {
+    id: 'pr2',
+    name: 'Modern Home Kitchen - Hanoi',
+    category: 'Project',
+    subcategory: 'Residential',
+    price: 0,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop',
+    description: 'Complete kitchen magnetic wall system for a modern home in Hanoi, featuring spice racks, knife holders, and whiteboard panels.',
+    features: ['Full kitchen system', 'Custom layout', 'Matching accessories', 'Clean installation'],
+    dimensions: 'Custom',
+    material: 'High-grade steel with white finish'
+  },
+  {
+    id: 'pr3',
+    name: 'Office Collaboration Space - Da Nang',
+    category: 'Project',
+    subcategory: 'Commercial',
+    price: 0,
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop',
+    description: 'Large-format magnetic whiteboard installation for a tech company\'s collaboration area in Da Nang.',
+    features: ['Floor-to-ceiling panels', 'Whiteboard surface', 'Modular design', 'Branded finish'],
+    dimensions: 'Custom',
+    material: 'Commercial-grade steel'
   }
 ];
 
-// Mock news data
+// ── Category tree used by the sidebar ──
+export const categoryTree = [
+  {
+    label: 'Product JM',
+    key: 'Product JM',
+    children: [
+      { label: 'JM Board A', key: 'JM Board A' },
+      { label: 'JM Board B', key: 'JM Board B' },
+    ],
+  },
+  {
+    label: 'Magnetic Tools',
+    key: 'Magnetic Tools',
+    children: [
+      { label: 'Kitchen', key: 'Kitchen' },
+      { label: 'Accessories', key: 'Accessories' },
+    ],
+  },
+  {
+    label: 'Project',
+    key: 'Project',
+    children: [
+      { label: 'Commercial', key: 'Commercial' },
+      { label: 'Residential', key: 'Residential' },
+    ],
+  },
+];
+
+// ── Keep existing news export ──
 export const news = [
   {
     id: 'n1',
@@ -152,6 +254,7 @@ export const news = [
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop'
   }
 ];
+
 
 // Mock banner data
 export const banners = [
