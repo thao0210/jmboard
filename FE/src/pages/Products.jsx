@@ -4,13 +4,13 @@ import { products, categoryTree } from '../data/mockData';
 import styles from './Products.module.scss';
 
 const Products = ({ addToCart }) => {
-  // null = show all, string = filter by category or subcategory key
   const [selected, setSelected] = useState(null);
-  // track which parent categories are expanded
   const [expanded, setExpanded] = useState({ 'Product JM': true, 'Magnetic Tools': false, 'Project': false });
 
-  const toggleExpand = (key) => {
+  // Bấm vào parent: toggle expand VÀ set filter
+  const handleParentClick = (key) => {
     setExpanded((prev) => ({ ...prev, [key]: !prev[key] }));
+    setSelected(key);
   };
 
   const filteredProducts = !selected
@@ -41,50 +41,32 @@ const Products = ({ addToCart }) => {
           {/* ── Sidebar ── */}
           <aside className={styles.sidebar}>
             <div className={styles.sidebarCard}>
-              <h3 className={styles.sidebarTitle}>Categories</h3>
-
-              {/* All */}
-              <button
-                className={`${styles.parentItem} ${!selected ? styles.active : ''}`}
-                onClick={() => setSelected(null)}
-              >
-                <span>All Products</span>
-                <span className={styles.count}>{products.length}</span>
-              </button>
 
               {categoryTree.map((parent) => (
                 <div key={parent.key} className={styles.categoryGroup}>
-                  {/* Parent row */}
-                  <div className={styles.parentRow}>
-                    <button
-                      className={`${styles.parentItem} ${selected === parent.key ? styles.active : ''}`}
-                      onClick={() => setSelected(parent.key)}
+                  {/* Bấm vào parent text → toggle expand + filter */}
+                  <button
+                    className={`${styles.parentItem} ${selected === parent.key ? styles.active : ''}`}
+                    onClick={() => handleParentClick(parent.key)}
+                  >
+                    <span>{parent.label}</span>
+                    <span className={styles.count}>{getCount(parent.key)}</span>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      className={styles.chevron}
+                      style={{
+                        transform: expanded[parent.key] ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.2s ease',
+                      }}
                     >
-                      <span>{parent.label}</span>
-                      <span className={styles.count}>{getCount(parent.key)}</span>
-                    </button>
-                    {/* Expand toggle */}
-                    <button
-                      className={styles.expandBtn}
-                      onClick={() => toggleExpand(parent.key)}
-                      aria-label="toggle"
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        style={{
-                          transform: expanded[parent.key] ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.2s ease',
-                        }}
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </button>
-                  </div>
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
 
                   {/* Children */}
                   {expanded[parent.key] && (

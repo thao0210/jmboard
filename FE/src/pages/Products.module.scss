@@ -48,7 +48,7 @@
 .sidebarCard {
   background: white;
   border-radius: var(--border-radius);
-  padding: 20px;
+  padding: 16px;
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 120px;
@@ -58,43 +58,30 @@
   }
 }
 
-.sidebarTitle {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-text-light);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  padding: 0 4px;
-  font-family: inherit;
-}
-
 .categoryGroup {
   margin-bottom: 2px;
 }
 
-.parentRow {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* KEY CHANGE: dùng flex-start thay space-between, count nằm sát label */
+/* Parent: label flex-grow, count + chevron nằm phải */
 .parentItem {
-  flex: 1;
-  padding: 9px 12px;
+  width: 100%;
+  padding: 10px 12px;
   border-radius: 8px;
   text-align: left;
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* ← không còn space-between */
-  gap: 6px;
+  gap: 8px;
   transition: background 0.18s ease, color 0.18s ease;
   background: transparent;
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text);
   font-family: inherit;
+  cursor: pointer;
+
+  span:first-child {
+    flex: 1;
+  }
 
   &:hover {
     background: var(--color-gray);
@@ -108,31 +95,25 @@
       background: rgba(255, 255, 255, 0.25);
       color: white;
     }
+
+    .chevron {
+      color: white;
+    }
   }
 }
 
-.expandBtn {
-  padding: 6px 7px;
-  border-radius: 6px;
-  color: var(--color-text-light);
-  transition: background 0.18s ease, color 0.18s ease;
+.chevron {
   flex-shrink: 0;
-  line-height: 0;
-
-  &:hover {
-    background: var(--color-gray);
-    color: var(--color-text);
-  }
+  color: var(--color-text-light);
 }
 
-/* Count nhỏ gọn ngay cạnh chữ */
 .count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 20px;
   height: 18px;
-  padding: 0 5px;
+  padding: 0 6px;
   background: var(--color-gray);
   color: var(--color-text-light);
   border-radius: 20px;
@@ -161,14 +142,18 @@
   text-align: left;
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* ← không còn space-between */
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
   font-weight: 500;
   color: var(--color-text-light);
   background: transparent;
   transition: background 0.18s ease, color 0.18s ease;
   font-family: inherit;
+  cursor: pointer;
+
+  span:first-child {
+    flex: 1;
+  }
 
   &:hover {
     background: var(--color-gray);

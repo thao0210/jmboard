@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -9,8 +9,37 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import './styles/global.scss';
 import NewsDetail from './pages/NewsDetail';
+import './styles/global.scss';
+
+// Tách ra để useLocation nằm bên trong <Router>
+const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart }) => {
+  const location = useLocation();
+
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={
+        <Products key={location.key} addToCart={addToCart} />
+      } />
+      <Route path="/products/:id" element={<ProductDetails addToCart={addToCart} />} />
+      <Route
+        path="/cart"
+        element={
+          <Cart
+            cart={cart}
+            removeFromCart={removeFromCart}
+            updateQuantity={updateQuantity}
+          />
+        }
+      />
+      <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/news/:id" element={<NewsDetail />} />
+    </Routes>
+  );
+};
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -31,56 +60,35 @@ function App() {
   const updateQuantity = (productId, newQuantity) => {
     const productInCart = cart.filter(item => item.id === productId);
     const currentQuantity = productInCart.length;
-    
+
     if (newQuantity > currentQuantity) {
-      // Add more
       const product = productInCart[0];
       const itemsToAdd = newQuantity - currentQuantity;
       setCart([...cart, ...Array(itemsToAdd).fill(product)]);
     } else if (newQuantity < currentQuantity) {
-      // Remove some
       const itemsToRemove = currentQuantity - newQuantity;
       const newCart = [...cart];
       for (let i = 0; i < itemsToRemove; i++) {
         const index = newCart.findIndex(item => item.id === productId);
-        if (index !== -1) {
-          newCart.splice(index, 1);
-        }
+        if (index !== -1) newCart.splice(index, 1);
       }
       setCart(newCart);
     }
   };
 
-  const clearCart = () => {
-    setCart([]);
-  };
+  const clearCart = () => setCart([]);
 
   return (
     <Router>
       <div className="App">
         <Header cartCount={cart.length} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products addToCart={addToCart} />} />
-          <Route path="/products/:id" element={<ProductDetails addToCart={addToCart} />} />
-          <Route 
-            path="/cart" 
-            element={
-              <Cart 
-                cart={cart} 
-                removeFromCart={removeFromCart}
-                updateQuantity={updateQuantity}
-              />
-            } 
-          />
-          <Route 
-            path="/checkout" 
-            element={<Checkout cart={cart} clearCart={clearCart} />} 
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
-        </Routes>
+        <AppRoutes
+          cart={cart}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          updateQuantity={updateQuantity}
+          clearCart={clearCart}
+        />
         <Footer />
       </div>
     </Router>
