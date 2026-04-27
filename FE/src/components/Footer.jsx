@@ -1,6 +1,7 @@
 import React from 'react';
 import { policies } from '../data/mockData';
 import styles from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -27,7 +28,7 @@ const Footer = () => {
             <ul>
               {policies.map((policy) => (
                 <li key={policy.id}>
-                  <a href={`/policies/${policy.id}`}>{policy.title}</a>
+                  <Link to={`/policies/${policy.id}`}>{policy.title}</Link>
                 </li>
               ))}
             </ul>
