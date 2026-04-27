@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { policies } from '../data/mockData';
 import styles from './NewsDetail.module.scss';
@@ -8,6 +8,10 @@ const PolicyDetail = () => {
   const navigate = useNavigate();
 
   const policy = policies.find((p) => p.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!policy) {
     return (
