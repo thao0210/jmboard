@@ -16,7 +16,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
+
   @media (max-width: 768px) {
     font-size: 40px;
   }
@@ -39,24 +39,24 @@
   gap: 60px;
   align-items: center;
   margin-bottom: 100px;
-  
+
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   &:nth-child(even) {
     .textContent {
       order: 2;
-      
+
       @media (max-width: 968px) {
         order: 1;
       }
     }
-    
+
     .imageBox {
       order: 1;
-      
+
       @media (max-width: 968px) {
         order: 2;
       }
@@ -71,13 +71,13 @@
     margin-bottom: 24px;
     color: var(--color-text);
   }
-  
+
   p {
     font-size: 17px;
     line-height: 1.8;
     color: var(--color-text-light);
     margin-bottom: 20px;
-    
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -88,23 +88,24 @@
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  
+
   img {
     width: 100%;
     height: auto;
     display: block;
     transition: var(--transition);
-    
+
     &:hover {
       transform: scale(1.05);
     }
   }
 }
 
+/* ── Values section ── */
 .values {
   text-align: center;
   margin-top: 120px;
-  
+
   h2 {
     font-size: 42px;
     font-weight: bold;
@@ -119,38 +120,49 @@
   gap: 40px;
 }
 
+/* Value card — now clickable */
 .valueCard {
   text-align: center;
-  padding: 40px 24px;
+  padding: 40px 24px 32px;
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
-  
-  &:hover {
+  cursor: pointer;
+  position: relative;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    
+
     .valueIcon {
       background: var(--color-primary);
-      
+
       svg {
         color: white;
       }
     }
+
+    .learnMore {
+      color: var(--color-primary);
+      gap: 8px;
+    }
   }
-  
+
   h3 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 12px;
     color: var(--color-text);
   }
-  
+
   p {
     font-size: 15px;
     line-height: 1.6;
     color: var(--color-text-light);
+    margin-bottom: 20px;
   }
 }
 
@@ -164,9 +176,23 @@
   align-items: center;
   justify-content: center;
   transition: var(--transition);
-  
+
   svg {
     color: var(--color-primary);
+    transition: var(--transition);
+  }
+}
+
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  transition: var(--transition);
+
+  svg {
     transition: var(--transition);
   }
 }

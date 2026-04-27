@@ -11,6 +11,9 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NewsDetail from './pages/NewsDetail';
 import './styles/global.scss';
+import ProjectDetail from './pages/ProjectDetail';
+import ValueDetail from './pages/ValueDetail';
+import PolicyDetail from './pages/PolicyDetail';
 
 // Tách ra để useLocation nằm bên trong <Router>
 const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart }) => {
@@ -23,6 +26,7 @@ const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart 
         <Products key={location.key} addToCart={addToCart} />
       } />
       <Route path="/products/:id" element={<ProductDetails addToCart={addToCart} />} />
+      <Route path="/projects/:id"    element={<ProjectDetail />} />
       <Route
         path="/cart"
         element={
@@ -35,8 +39,11 @@ const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart 
       />
       <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
       <Route path="/about" element={<About />} />
+      <Route path="/about/values/:id"       element={<ValueDetail />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/news/:id" element={<NewsDetail />} />
+      <Route path="/policies/:id" element={<PolicyDetail />} />
+      
     </Routes>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { policies } from '../data/mockData';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -8,6 +9,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerContent}>
+
           <div className={styles.footerSection}>
             <div className={styles.logoSection}>
               <h3 className={styles.footerLogo}>JMBOARD</h3>
@@ -19,13 +21,15 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Quick Links — dynamic từ policies */}
           <div className={styles.footerSection}>
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/products">Products</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              {policies.map((policy) => (
+                <li key={policy.id}>
+                  <a href={`/policies/${policy.id}`}>{policy.title}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -63,6 +67,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
         </div>
 
         <div className={styles.footerBottom}>

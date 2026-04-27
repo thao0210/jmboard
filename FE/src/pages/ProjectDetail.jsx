@@ -1,22 +1,22 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { news } from '../data/mockData';
+import { projects } from '../data/mockData';
 import styles from './NewsDetail.module.scss';
 
-const NewsDetail = () => {
+const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const article = news.find((n) => String(n.id) === String(id));
-  const related = article
-    ? news.filter((n) => n.id !== article.id).slice(0, 3)
+  const project = projects.find((p) => p.id === id || p.slug === id);
+  const related = project
+    ? projects.filter((p) => p.id !== project.id).slice(0, 3)
     : [];
 
-  if (!article) {
+  if (!project) {
     return (
       <div className={styles.notFound}>
-        <p>Article not found.</p>
-        <button onClick={() => navigate('/news')}>← Back to News</button>
+        <p>Project not found.</p>
+        <button onClick={() => navigate('/projects')}>← Back to Projects</button>
       </div>
     );
   }
@@ -24,53 +24,49 @@ const NewsDetail = () => {
   return (
     <div className={styles.page}>
       <div className={styles.topbar}>
-        <button className={styles.backBtn} onClick={() => navigate('/news')}>
+        <button className={styles.backBtn} onClick={() => navigate('/projects')}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
-          Back to News
+          Back to Projects
         </button>
       </div>
 
       <div className={styles.contentCol}>
         <div className={styles.meta}>
-          <span className={styles.categoryBadge}>{article.category}</span>
-          <span className={styles.date}>
-            {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </span>
+          <span className={styles.categoryBadge}>{project.type}</span>
+          <span className={styles.date}>{project.year}</span>
         </div>
 
-        <h1 className={styles.articleTitle}>{article.title}</h1>
+        <h1 className={styles.articleTitle}>{project.title}</h1>
 
         <div className={styles.imageWrap}>
-          <img src={article.image} alt={article.title} />
+          <img src={project.coverImage} alt={project.title} />
         </div>
 
         <div
           className={styles.body}
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          dangerouslySetInnerHTML={{ __html: project.content }}
         />
       </div>
 
       {related.length > 0 && (
         <div className={styles.related}>
-          <p className={styles.relatedHeading}>Related News</p>
+          <p className={styles.relatedHeading}>More Projects</p>
           <div className={styles.relatedGrid}>
             {related.map((item, index) => (
               <article
                 key={item.id}
                 className={styles.relatedCard}
                 style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => navigate(`/news/${item.id}`)}
+                onClick={() => navigate(`/projects/${item.id}`)}
               >
-                <img src={item.image} alt={item.title} />
+                <img src={item.coverImage} alt={item.title} />
                 <div className={styles.relatedBody}>
-                  <p className={styles.relatedCat}>{item.category}</p>
+                  <p className={styles.relatedCat}>{item.type}</p>
                   <p className={styles.relatedTitle}>{item.title}</p>
-                  <p className={styles.relatedDate}>
-                    {new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                  </p>
+                  <p className={styles.relatedDate}>{item.location} · {item.year}</p>
                 </div>
               </article>
             ))}
@@ -81,4 +77,4 @@ const NewsDetail = () => {
   );
 };
 
-export default NewsDetail;
+export default ProjectDetail;
