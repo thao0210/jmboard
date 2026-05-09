@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCategory } from '../context/CategoryContext';
 import styles from './Header.module.scss';
 
 const Header = ({ cartCount }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { setSelected } = useCategory();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,9 +20,15 @@ const Header = ({ cartCount }) => {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/products', label: 'Products' },
+    { path: '/news', label: 'News' },
     { path: '/about', label: 'About Us' },
-    { path: '/contact', label: 'Contact Us' }
+    { path: '/contact', label: 'Contact Us' },
   ];
+
+  const handleNavClick = (path) => {
+    if (path === '/products') setSelected(null);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
@@ -29,7 +37,6 @@ const Header = ({ cartCount }) => {
         <div className={styles.colorSegment} style={{ background: 'var(--color-gold)' }}></div>
         <div className={styles.colorSegment} style={{ background: 'var(--color-orange)' }}></div>
       </div>
-      
       <div className="container">
         <div className={styles.headerContent}>
           <Link to="/" className={styles.logo}>
@@ -49,7 +56,7 @@ const Header = ({ cartCount }) => {
                   key={item.path}
                   to={item.path}
                   className={`${styles.navLink} ${location.pathname === item.path ? styles.active : ''}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => handleNavClick(item.path)}
                 >
                   {item.label}
                 </Link>
@@ -58,15 +65,15 @@ const Header = ({ cartCount }) => {
 
             <Link to="/cart" className={styles.cartButton}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="9" cy="21" r="1"/>
-                <circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
               {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
             </Link>
           </div>
 
-          <button 
+          <button
             className={styles.mobileToggle}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"

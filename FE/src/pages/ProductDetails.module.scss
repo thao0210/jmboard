@@ -1,40 +1,35 @@
 .productDetails {
   min-height: 100vh;
   padding: 60px 0;
+  background: var(--color-gray);
 }
 
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 40px;
-  font-size: 14px;
-  color: var(--color-text-light);
-  
-  a {
-    transition: var(--transition);
-    
-    &:hover {
-      color: var(--color-primary);
-    }
-  }
-  
-  span:not(:last-child) {
-    color: var(--color-text-light);
-  }
-  
-  span:last-child {
-    color: var(--color-text);
-    font-weight: 600;
+// ── Layout giống Products (để sticky hoạt động) ──
+.productsLayout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
   }
 }
 
+.mainContent {
+  min-width: 0;
+
+  @media (max-width: 968px) {
+    order: 1;
+  }
+}
+
+// ── Product detail layout: hình trái, info phải ──
 .productLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   margin-bottom: 100px;
-  
+
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -45,7 +40,7 @@
   position: sticky;
   top: 120px;
   height: fit-content;
-  
+
   @media (max-width: 968px) {
     position: static;
   }
@@ -56,7 +51,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   animation: fadeIn 0.8s ease-out;
-  
+
   img {
     width: 100%;
     height: auto;
@@ -87,7 +82,7 @@
   margin-bottom: 20px;
   color: var(--color-text);
   line-height: 1.2;
-  
+
   @media (max-width: 768px) {
     font-size: 32px;
   }
@@ -98,7 +93,7 @@
   font-weight: bold;
   color: var(--color-primary);
   margin-bottom: 32px;
-  
+
   @media (max-width: 768px) {
     font-size: 36px;
   }
@@ -108,7 +103,7 @@
   margin-bottom: 32px;
   padding-bottom: 32px;
   border-bottom: 2px solid var(--color-gray);
-  
+
   p {
     font-size: 17px;
     line-height: 1.8;
@@ -118,22 +113,22 @@
 
 .details {
   margin-bottom: 32px;
-  
+
   h3 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 16px;
     color: var(--color-text);
   }
-  
+
   ul {
     list-style: none;
-    
+
     li {
       padding: 8px 0;
       font-size: 16px;
       color: var(--color-text-light);
-      
+
       strong {
         color: var(--color-text);
         font-weight: 600;
@@ -144,26 +139,26 @@
 
 .features {
   margin-bottom: 40px;
-  
+
   h3 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--color-text);
   }
-  
+
   ul {
     list-style: none;
     display: grid;
     gap: 12px;
-    
+
     li {
       display: flex;
       align-items: center;
       gap: 12px;
       font-size: 16px;
       color: var(--color-text);
-      
+
       svg {
         color: var(--color-primary);
         flex-shrink: 0;
@@ -176,7 +171,7 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  
+
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: stretch;
@@ -189,7 +184,7 @@
   border: 2px solid var(--color-gray);
   border-radius: var(--border-radius-sm);
   overflow: hidden;
-  
+
   button {
     width: 48px;
     height: 48px;
@@ -197,18 +192,18 @@
     font-weight: 700;
     background: var(--color-gray);
     transition: var(--transition);
-    
+
     &:hover:not(:disabled) {
       background: var(--color-primary);
       color: white;
     }
-    
+
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
     }
   }
-  
+
   span {
     width: 60px;
     text-align: center;
@@ -217,9 +212,10 @@
   }
 }
 
+// ── Related ──
 .relatedSection {
   margin-top: 80px;
-  
+
   h2 {
     font-size: 36px;
     font-weight: bold;
@@ -232,11 +228,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  
+
   @media (max-width: 968px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
@@ -248,16 +244,16 @@
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
-  
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    
+
     img {
       transform: scale(1.1);
     }
   }
-  
+
   img {
     width: 100%;
     height: 240px;
@@ -268,14 +264,14 @@
 
 .relatedInfo {
   padding: 20px;
-  
+
   h4 {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 8px;
     color: var(--color-text);
   }
-  
+
   p {
     font-size: 20px;
     font-weight: bold;
@@ -289,7 +285,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+
   h2 {
     font-size: 32px;
     margin-bottom: 24px;
@@ -297,23 +293,11 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }

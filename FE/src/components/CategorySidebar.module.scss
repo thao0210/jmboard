@@ -1,0 +1,97 @@
+.sidebar {
+  // không cần sticky ở đây vì sidebarCard đã handle
+}
+
+.sidebarCard {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+
+  @media (max-width: 968px) {
+    position: static;
+  }
+}
+
+.sidebarTitle {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  padding: 4px 12px 12px;
+  margin-bottom: 4px;
+  border-bottom: 2px solid var(--color-gray);
+}
+
+.categoryGroup {
+  margin-bottom: 2px;
+}
+
+.parentItem {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.18s ease, color 0.18s ease;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  font-family: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-gray);
+  }
+
+  &.active {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+.childList {
+  list-style: none;
+  margin: 2px 0 4px 16px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-gray);
+
+  li {
+    margin-bottom: 1px;
+  }
+}
+
+.childItem {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 7px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-light);
+  background: transparent;
+  transition: background 0.18s ease, color 0.18s ease;
+  font-family: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-gray);
+    color: var(--color-text);
+  }
+
+  &.activeChild {
+    color: var(--color-primary);
+    font-weight: 700;
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+}

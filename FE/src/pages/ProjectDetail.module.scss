@@ -1,0 +1,15 @@
+// ProjectDetail.module.scss
+@use './NewsDetail.module' as *;  // kế thừa toàn bộ
+
+// Thêm mới cho sidebar layout
+.detailLayout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 60px 0;
+}
+
+.detailMain {
+  flex: 1;
+  min-width: 0;
+}

@@ -14,6 +14,8 @@ import './styles/global.scss';
 import ProjectDetail from './pages/ProjectDetail';
 import ValueDetail from './pages/ValueDetail';
 import PolicyDetail from './pages/PolicyDetail';
+import News from './pages/News';
+import { CategoryProvider } from './context/CategoryContext';
 
 // Tách ra để useLocation nằm bên trong <Router>
 const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart }) => {
@@ -43,7 +45,7 @@ const AppRoutes = ({ cart, addToCart, removeFromCart, updateQuantity, clearCart 
       <Route path="/contact" element={<Contact />} />
       <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/policies/:id" element={<PolicyDetail />} />
-      
+      <Route path="/news" element={<News />} />
     </Routes>
   );
 };
@@ -86,6 +88,7 @@ function App() {
   const clearCart = () => setCart([]);
 
   return (
+    <CategoryProvider>
     <Router>
       <div className="App">
         <Header cartCount={cart.length} />
@@ -99,6 +102,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </CategoryProvider>
   );
 }
 
